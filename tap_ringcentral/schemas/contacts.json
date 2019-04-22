@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "type": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "firstName": {
+            "type": "string"
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "extensionNumber": {
+            "type": "integer"
+        },
+        "account": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "phoneNumbers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "usageType": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

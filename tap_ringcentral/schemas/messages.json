@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "uri": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "to": {},
+        "type": {
+            "type": "string"
+        },
+        "creationTime": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "readStatus": {
+            "type": "string"
+        },
+        "priority": {
+            "type": "string"
+        },
+        "attachments": {},
+        "direction": {
+            "type": "string"
+        },
+        "availability": {
+            "type": "string"
+        },
+        "messageStatus": {
+            "type": "string"
+        },
+        "faxResolution": {
+            "type": "string"
+        },
+        "faxPageCount": {
+            "type": "integer"
+        },
+        "lastModifiedTime": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "coverIndex": {
+            "type": "integer"
+        }
+    }
+}

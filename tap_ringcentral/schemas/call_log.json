@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "uri": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "sessionId": {
+            "type": "string"
+        },
+        "startTime": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "duration": {
+            "type": "integer"
+        },
+        "type": {
+            "type": "string"
+        },
+        "direction": {
+            "type": "string"
+        },
+        "action": {
+            "type": "string"
+        },
+        "result": {
+            "type": "string"
+        },
+        "to": {
+            "type": "object",
+            "properties": {
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                }
+            }
+        },
+        "from": {
+            "type": "object",
+            "properties": {
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "extension": {
+            "type": "object",
+            "properties": {
+                "uri": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

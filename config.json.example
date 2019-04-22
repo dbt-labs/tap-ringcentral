@@ -1,0 +1,12 @@
+{
+    "api_url": "https://platform.devtest.ringcentral.com",
+
+    "client_id": "",
+    "client_secret": "",
+
+    "username": "",
+    "password": "",
+
+    "start_date": "2019-01-01T00:00:00Z",
+    "user_agent": "tap-ringcentral <user@domain.com>"
+}
