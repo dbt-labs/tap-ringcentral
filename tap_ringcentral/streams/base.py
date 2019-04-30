@@ -82,13 +82,14 @@ class ContactBaseStream(BaseStream):
 
             date = date + interval
 
-        return self.state
+        save_state(self.state)
 
     def sync_data_for_period(self, date, interval):
         for extension in tap_ringcentral.cache.contacts:
             extensionId = extension['id']
             self.sync_data_for_extension(date, interval, extensionId)
 
+        self.state = incorporate(self.state, self.TABLE, 'last_record', date.isoformat())
         return self.state
 
     def get_params(self, date_from, date_to, page):
