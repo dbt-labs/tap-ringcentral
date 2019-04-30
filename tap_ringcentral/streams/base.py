@@ -75,7 +75,7 @@ class ContactBaseStream(BaseStream):
         if date is None:
             date = get_config_start_date(self.config)
 
-        interval = timedelta(days=30)
+        interval = timedelta(days=7)
 
         while date < datetime.now(pytz.utc):
             self.sync_data_for_period(date, interval)

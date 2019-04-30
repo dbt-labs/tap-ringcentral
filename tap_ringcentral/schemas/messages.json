@@ -21,10 +21,17 @@
         "priority": {
             "type": "string"
         },
+        "conversation": {},
+        "conversationId": {},
+        "from": {},
+        "smsSendingAttemptsCount": {},
+        "subject": {},
+        "vmTranscriptionStatus": {},
         "attachments": {},
         "direction": {
             "type": "string"
         },
+        "deleted": {},
         "availability": {
             "type": "string"
         },

@@ -1,6 +1,7 @@
 import requests
 import base64
 import backoff
+import time
 
 import singer
 import singer.metrics
@@ -8,13 +9,13 @@ import singer.metrics
 LOGGER = singer.get_logger()  # noqa
 
 
-class RateLimitException(Exception):
+class APIException(Exception):
     pass
 
 
 class RingCentralClient:
 
-    MAX_TRIES = 5
+    MAX_TRIES = 7
 
     def __init__(self, config):
         self.config = config
@@ -49,7 +50,7 @@ class RingCentralClient:
         return json['refresh_token'], json['access_token']
 
     @backoff.on_exception(backoff.expo,
-                          RateLimitException,
+                          APIException,
                           max_tries=MAX_TRIES)
     def make_request(self, url, method, params=None, body=None):
         LOGGER.info("Making {} request to {} ({})".format(method, url, params))
@@ -67,11 +68,14 @@ class RingCentralClient:
 
         LOGGER.info("Got status code {}".format(response.status_code))
 
+
         if response.status_code == 429:
-            LOGGER.info("Rate limit status code received, waiting")
-            raise RateLimitException()
+            timeout = response.headers['Retry-After']
+            LOGGER.info("Rate limit status code received, waiting {} seconds".format(timeout))
+            time.sleep(int(timeout))
+            raise APIException("Rate limit exceeded")
 
         elif response.status_code != 200:
-            raise RuntimeError(response.text)
+            raise APIException(response.text)
 
         return response.json()

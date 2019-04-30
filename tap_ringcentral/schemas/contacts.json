@@ -22,6 +22,12 @@
         "extensionNumber": {
             "type": "integer"
         },
+        "name": {
+            "type": "string"
+        },
+        "jobTitle": {
+            "type": "string"
+        },
         "account": {
             "type": "object",
             "properties": {
@@ -35,6 +41,9 @@
             "items": {
                 "type": "object",
                 "properties": {
+                    "type": {
+                        "type": "string"
+                    },
                     "phoneNumber": {
                         "type": "string"
                     },

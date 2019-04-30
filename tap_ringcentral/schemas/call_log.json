@@ -2,13 +2,13 @@
     "type": "object",
     "properties": {
         "uri": {
-            "type": "string"
+            "type": ["null", "string"]
         },
         "id": {
-            "type": "string"
+            "type": ["null", "string"]
         },
         "sessionId": {
-            "type": "string"
+            "type": ["null", "string"]
         },
         "startTime": {
             "type": "string",
@@ -18,25 +18,32 @@
             "type": "integer"
         },
         "type": {
-            "type": "string"
+            "type": ["null", "string"]
         },
         "direction": {
-            "type": "string"
+            "type": ["null", "string"]
         },
         "action": {
-            "type": "string"
+            "type": ["null", "string"]
         },
         "result": {
-            "type": "string"
+            "type": ["null", "string"]
         },
+        "deleted": {},
+        "reason": {},
+        "reasonDescription": {},
+        "message": {},
         "to": {
             "type": "object",
             "properties": {
+                "name": {
+                    "type": ["null", "string"]
+                },
                 "phoneNumber": {
-                    "type": "string"
+                    "type": ["null", "string"]
                 },
                 "location": {
-                    "type": "string"
+                    "type": ["null", "string"]
                 }
             }
         },
@@ -44,10 +51,13 @@
             "type": "object",
             "properties": {
                 "phoneNumber": {
-                    "type": "string"
+                    "type": ["null", "string"]
+                },
+                "location": {
+                    "type": ["null", "string"]
                 },
                 "name": {
-                    "type": "string"
+                    "type": ["null", "string"]
                 }
             }
         },
@@ -55,7 +65,7 @@
             "type": "object",
             "properties": {
                 "uri": {
-                    "type": "string"
+                    "type": ["null", "string"]
                 },
                 "id": {
                     "type": "integer"
