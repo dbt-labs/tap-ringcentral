@@ -3,6 +3,7 @@ import pytz
 import singer
 import singer.utils
 import singer.metrics
+import time
 
 from datetime import timedelta, datetime
 
@@ -108,7 +109,7 @@ class ContactBaseStream(BaseStream):
         date_to = (date + interval).isoformat()
 
         while True:
-            LOGGER.info('Syncing {}s for contact={} from {} to {}, page={}'.format(
+            LOGGER.info('Syncing {} for contact={} from {} to {}, page={}'.format(
                 table,
                 extensionId,
                 date_from,
@@ -123,6 +124,9 @@ class ContactBaseStream(BaseStream):
                 self.client.base_url,
                 self.api_path.format(extensionId=extensionId)
             )
+
+            # The API rate limits us pretty aggressively
+            time.sleep(5)
 
             result = self.client.make_request(
                 url, self.API_METHOD, params=params, body=body)
