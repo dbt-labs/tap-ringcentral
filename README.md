@@ -6,7 +6,7 @@ This is a [Singer](http://singer.io) tap that produces JSON-formatted data follo
 
 It:
 
-- Generates a catalog of available data in the Amazon Advertising API
+- Generates a catalog of available data in the RingCentral API
 - Extracts the following resources:
     - [Contacts](https://developers.ringcentral.com/api-reference#Company-Contacts-listDirectoryEntries)
     - [Call Logs](https://developers.ringcentral.com/api-reference#Call-Log-loadUserCallLog)
@@ -67,7 +67,7 @@ Step 4 a file called `catalog.json` that specifies all the available endpoints a
 #### 6. Run it!
 
 ```bash
-tap-ringcentral -c config.json --properties catalog.json
+tap-ringcentral -c config.json --catalog catalog.json
 ```
 
 Copyright &copy; 2019 Fishtown Analytics
