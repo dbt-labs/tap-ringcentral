@@ -9,7 +9,8 @@ It:
 - Generates a catalog of available data in the RingCentral API
 - Extracts the following resources:
     - [Contacts](https://developers.ringcentral.com/api-reference#Company-Contacts-listDirectoryEntries)
-    - [Call Logs](https://developers.ringcentral.com/api-reference#Call-Log-loadUserCallLog)
+    - [User Call Logs](https://developers.ringcentral.com/api-reference#Call-Log-loadUserCallLog)
+    - [Company Call Logs](https://developers.ringcentral.com/api-reference#Call-Log-loadCompanyCallLog)
     - [SMS/MMS/Voicemal/Fax](https://developers.ringcentral.com/api-reference#SMS-and-MMS-listMessages)
     - [Meetings](https://developers.ringcentral.com/api-reference#Upcoming-Meetings)
     

@@ -92,17 +92,28 @@ class ContactBaseStream(BaseStream):
         self.state = incorporate(self.state, self.TABLE, 'last_record', date.isoformat())
         return self.state
 
-    def get_params(self, date_from, date_to, page):
+    def get_params(self, date_from, date_to, page, per_page):
         return {
             "page": page,
+            "perPage": per_page,
             "dateFrom": date_from,
             "dateTo": date_to,
             "showDeleted": True,
         }
 
+    def get_stream_data(self, result, contact_id):
+        xf = []
+        for record in result['records']:
+            record_xf = self.transform_record(record)
+            record_xf['_contact_id'] = contact_id
+            xf.append(record_xf)
+        return xf
+
     def sync_data_for_extension(self, date, interval, extensionId):
         table = self.TABLE
+
         page = 1
+        per_page = 100
 
         date_from = date.isoformat()
         date_to = (date + interval).isoformat()
@@ -116,7 +127,7 @@ class ContactBaseStream(BaseStream):
                 page
             ))
 
-            params = self.get_params(date_from, date_to, page)
+            params = self.get_params(date_from, date_to, page, per_page)
             body = self.get_body()
 
             url = "{}{}".format(
@@ -130,17 +141,13 @@ class ContactBaseStream(BaseStream):
             result = self.client.make_request(
                 url, self.API_METHOD, params=params, body=body)
 
-            data = self.get_stream_data(result)
-
-            if len(data) == 0:
-                break
+            data = self.get_stream_data(result, extensionId)
 
             with singer.metrics.record_counter(endpoint=table) as counter:
-                for obj in data:
-                    singer.write_records(
-                        table,
-                        [obj])
+                singer.write_records(table, data)
+                counter.increment(len(data))
 
-                    counter.increment()
+            if len(data) < per_page:
+                break
 
             page += 1

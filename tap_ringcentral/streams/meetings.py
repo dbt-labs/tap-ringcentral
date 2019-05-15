@@ -14,9 +14,3 @@ class MeetingStream(ContactBaseStream):
     @property
     def api_path(self):
         return '/restapi/v1.0/account/~/extension/{extensionId}/meeting'
-
-    def get_stream_data(self, result):
-        return [
-            self.transform_record(record)
-            for record in result['records']
-        ]
