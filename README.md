@@ -71,4 +71,4 @@ Step 4 a file called `catalog.json` that specifies all the available endpoints a
 tap-ringcentral -c config.json --catalog catalog.json
 ```
 
-Copyright &copy; 2019 Fishtown Analytics
+Copyright &copy; 2019 Stitch
