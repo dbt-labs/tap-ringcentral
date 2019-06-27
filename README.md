@@ -12,9 +12,6 @@ It:
     - [User Call Logs](https://developers.ringcentral.com/api-reference#Call-Log-loadUserCallLog)
     - [Company Call Logs](https://developers.ringcentral.com/api-reference#Call-Log-loadCompanyCallLog)
     - [SMS/MMS/Voicemal/Fax](https://developers.ringcentral.com/api-reference#SMS-and-MMS-listMessages)
-    - [Meetings](https://developers.ringcentral.com/api-reference#Upcoming-Meetings)
-    
-**NOTE:** The Meetings stream presently only returns Meetings for the user specified by the `username` and `password` in the `config.json` file (see below). To access Meetings for other RingCentral users, you will need to run the tap for this stream with these users credentials specified in the tap config.
 
 ### Quick Start
 
@@ -49,7 +46,6 @@ The following permissions are required:
 - Read Accounts
 - Read Call Log
 - Read Messages
-- Meetings (if using the Meetings stream is enabled)
 
 #### 3. Create the config file.
 
