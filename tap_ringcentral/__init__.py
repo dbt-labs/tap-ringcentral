@@ -3,6 +3,7 @@
 import singer
 
 import tap_framework
+from tap_framework.state import save_state
 import argparse
 import json
 
