@@ -7,6 +7,7 @@ LOGGER = singer.get_logger()  # noqa
 
 
 class MessageStream(ContactBaseStream):
+    NAME = 'MessageStream'
     KEY_PROPERTIES = ['id']
     API_METHOD = 'GET'
     TABLE = 'messages'

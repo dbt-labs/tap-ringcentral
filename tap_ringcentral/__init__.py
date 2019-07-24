@@ -13,7 +13,34 @@ LOGGER = singer.get_logger()  # noqa
 
 
 class RingCentralRunner(tap_framework.Runner):
-    pass
+    # Sync the streams in the order specified in the
+    # streams/__init__.py list of AVAILABLE_STREAMS
+    def do_sync(self):
+        LOGGER.info("Starting sync.")
+
+        streams = self.get_streams_to_replicate()
+        stream_map = {s.NAME: s for s in streams}
+
+        for available_stream in AVAILABLE_STREAMS:
+            if available_stream.NAME not in stream_map:
+                continue
+
+            stream = stream_map[available_stream.NAME]
+            try:
+                stream.state = self.state
+                stream.sync()
+                self.state = stream.state
+            except OSError as e:
+                LOGGER.error(str(e))
+                exit(e.errno)
+
+            except Exception as e:
+                LOGGER.error(str(e))
+                LOGGER.error('Failed to sync endpoint {}, moving on!'
+                             .format(stream.TABLE))
+                raise e
+
+        save_state(self.state)
 
 @singer.utils.handle_top_exception(LOGGER)
 def main():
