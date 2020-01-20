@@ -45,7 +45,9 @@ class RingCentralClient:
             headers=headers,
             data=body)
 
-        response.raise_for_status()
+        if response.status_code != 200:
+            raise APIException(response.text)
+
         json = response.json()
         return json['refresh_token'], json['access_token']
 
