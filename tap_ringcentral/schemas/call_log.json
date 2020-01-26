@@ -47,6 +47,9 @@
                 },
                 "location": {
                     "type": ["null", "string"]
+                },
+                "extensionId": {
+                    "type": ["null", "string"]
                 }
             }
         },
@@ -60,6 +63,9 @@
                     "type": ["null", "string"]
                 },
                 "name": {
+                    "type": ["null", "string"]
+                },
+                "extensionId": {
                     "type": ["null", "string"]
                 }
             }
