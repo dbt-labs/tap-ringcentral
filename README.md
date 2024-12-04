@@ -1,3 +1,15 @@
+# ***Archival Notice***
+This repository has been archived.
+
+As a result all of its historical issues and PRs have been closed.
+
+Please *do not clone* this repo without understanding the risk in doing so:
+- It may have unaddressed security vulnerabilities
+- It may have unaddressed bugs
+
+<details>
+   <summary>Click for historical readme</summary>
+
 # tap-ringcentral
 
 Author: Drew Banin (drew@fishtownanalytics.com)
@@ -30,7 +42,7 @@ pip install .
 - Note your `client_id`, `client_secret`, `username`, and `password` (used in the config.json file specified below)
 
 ##### Creating an application
-To create a new application, navigate to the [RingCentral Developer Console](https://developers.ringcentral.com/my-account.html#/applications) and click `Create App`. Make the application "Private" and select "Server-only (No UI)" as the Platform Type.
+To create a new application, navigate to the [RingCentral Developer Console](https://developers.ringcentral.com/my-account.html#/applications) and click `Create App`. Make the application &quot;Private&quot; and select &quot;Server-only (No UI)&quot; as the Platform Type.
 
 Your app will initially be created in a Sandbox. In order for your app to graduate from the Sandbox Environment to the Production Environment, you will need to (at the time of this writing):
 1. Exercise each permission requested by the app
@@ -67,4 +79,5 @@ Step 4 a file called `catalog.json` that specifies all the available endpoints a
 tap-ringcentral -c config.json --catalog catalog.json
 ```
 
-Copyright &copy; 2019 Fishtown Analytics
+Copyright &amp;copy; 2019 Fishtown Analytics
+
